@@ -3,7 +3,8 @@ import { reactive, defineProps, onMounted } from "vue";
 import { RouterLink } from "vue-router";
 const props = defineProps({
   country: Object,
-  index: Number
+  index: Number,
+  key: String
 
 });
 
@@ -19,7 +20,7 @@ const localCountry = reactive({
 
 <template>
   <div class="main-card w-[20rem] h-[24rem] drop-shadow-md bg-white rounded-md">
-    <a :href="`country/${index}`">
+    <RouterLink :to="`country/${localCountry.name}`">
     <div class="top h-1/2 overflow-hidden rounded-t-lg">
       <img 
       :src="localCountry.flag"
@@ -37,6 +38,6 @@ const localCountry = reactive({
         <span> Capital: {{ localCountry.capital }} </span>
       </div>
     </div>
-    </a>
+    </RouterLink>
   </div>
 </template>

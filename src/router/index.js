@@ -11,7 +11,7 @@ const router = createRouter({
             component: MenuView
         },
         {
-            path: '/country/:id',
+            path: '/country/:name',
             name: 'country',
             component: CountryView
         }
