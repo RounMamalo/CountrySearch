@@ -1,23 +1,29 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, computed } from "vue";
 import { useRoute } from "vue-router";
 import Countries from "@/data.json";
 
 const route = useRoute();
 const countries = ref(Countries);
-const idCountry = route.params.id;
+const idCountry = route.params.name;
+const localCountry = computed(() => {
+  return countries.value.find((country) => country.name === idCountry)
+}) 
+  
 const country = reactive({
-  flag: countries.value[idCountry].flag,
-  name: countries.value[idCountry].name,
-  nativeName: countries.value[idCountry].nativeName,
-  population: countries.value[idCountry].population,
-  region: countries.value[idCountry].region,
-  subRegion: countries.value[idCountry].subregion,
-  capital: countries.value[idCountry].Kabul,
-  domain: countries.value[idCountry].topLevelDomain[0],
-  currency: countries.value[idCountry].currencies,
-  languages: countries.value[idCountry].languages,
+  flag: localCountry.value.flag,
+  name: localCountry.value.name,
+  nativeName: localCountry.value.nativeName,
+  population: localCountry.value.population,
+  region: localCountry.value.region,
+  subRegion: localCountry.value.subregion,
+  capital: localCountry.value.Kabul,
+  domain: localCountry.value.topLevelDomain,
+  currency: localCountry.value.currencies,
+  languages: localCountry.value.languages,
 });
+
+
 </script>
 
 <template>
@@ -44,7 +50,7 @@ const country = reactive({
               <li>Region: {{ country.region }}</li>
               <li>Sub Region: {{ country.subRegion }}</li>
               <li>Capital: {{ country.capital }}</li>
-              <li>Top Level Doman: {{ country.domain }}</li>
+              <li>Top Level Doman: {{ country.domain[0] }}</li>
               <li>Currencies: {{ country.currency[0].code }}</li>
               <li>
                 Languages:
