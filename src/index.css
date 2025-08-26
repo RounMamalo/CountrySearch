@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.archivo-black-regular {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.archivo-black-medium {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+.archivo-black-large {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
